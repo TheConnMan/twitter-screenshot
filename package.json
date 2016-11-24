@@ -1,0 +1,13 @@
+{
+  "name": "twitter-screenshot",
+  "version": "0.1.0",
+  "description": "Screenshots of tweets by anyone as soon as they make them",
+  "main": "index.js",
+  "author": "TheConnMan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "phantom": "^3.1.0",
+    "phantomjs": "^2.1.7"
+  }
+}
