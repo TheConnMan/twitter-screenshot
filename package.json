@@ -6,9 +6,13 @@
   "author": "TheConnMan",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.7.7",
+    "dateformat": "^1.0.12",
     "express": "^4.14.0",
     "phantom": "^3.1.0",
+    "phantom-render-stream": "^2.1.0",
     "phantomjs": "^2.1.7",
+    "stream-to-buffer": "^0.1.0",
     "twitter": "^1.4.0"
   }
 }
