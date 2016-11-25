@@ -12,7 +12,7 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var stream = client.stream('statuses/filter', {track: 'javascript'});
+var stream = client.stream('statuses/filter', {track: process.env.TRACKING});
 stream.on('data', function(event) {
   if (event.text.indexOf('RT ') !== 0) {
     processEvent(event.user.screen_name, event.id_str);
