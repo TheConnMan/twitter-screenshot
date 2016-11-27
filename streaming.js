@@ -22,21 +22,25 @@ stream.on('data', function(event) {
 function processEvent(user, statusId) {
   var stream = phantomStream('https://twitter.com/' + user + '/status/' + statusId);
   streamToBuffer(stream, function (err, buffer) {
-    try {
-      var params = {
-          Bucket: process.env.BUCKET,
-          Key: dateFormat(new Date(), 'yyyy/mm/dd/HH-MM-ss-') + statusId + '.png',
-          Body: new Buffer(buffer, 'binary')
-      };
-      s3.upload(params, function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('Successfully uploaded https://twitter.com/' + user + '/status/' + statusId);
-        }
-      });
-    } catch (e) {
-      console.log(e);
+    if (err) {
+      console.log(err);
+    } else {
+      try {
+        var params = {
+            Bucket: process.env.BUCKET,
+            Key: dateFormat(new Date(), 'yyyy/mm/dd/HH-MM-ss-') + statusId + '.png',
+            Body: new Buffer(buffer, 'binary')
+        };
+        s3.upload(params, function(err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('Successfully uploaded https://twitter.com/' + user + '/status/' + statusId);
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
   });
 }
